@@ -1,0 +1,62 @@
+/* ===== App.css ===== */
+
+/* Tổng layout bao gồm footer + sidebar + content */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 100px 20px 100px 20px; /* ✅ chừa đủ cho header và footer */
+  background-color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* Sidebar bên trái */
+.sidebar {
+  width: 250px;
+  background-color: #d1e7ff;
+  padding: 20px;
+  height: auto;
+  min-height: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+}
+
+/* Nội dung chính bên phải */
+.content {
+  flex-grow: 1;
+  padding: 100px 20px 40px 20px; /* Chừa khoảng cho header cố định + footer */
+  overflow-y: auto;
+  background-color: #fff;
+  min-height: calc(100vh - 60px - 300px);
+}
+
+/* Header cố định */
+.header {
+  background-color: #d1e7ff;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  height: 60px;
+  width: calc(100% - 250px);
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer ở dưới */
+.footer {
+  background-color: #0f1117;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}

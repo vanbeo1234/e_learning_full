@@ -1,0 +1,1367 @@
+/* Add Course Form */
+.add-course-details {
+    max-width: 1200px;
+    padding: 80px 20px 20px; /* Tránh header */
+    margin: 0 auto; /* Căn giữa ngang */
+    margin-left: calc(250px + 20px); /* Dịch sang phải tránh sidebar */
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1; 
+    padding-bottom: 40px;  
+    text-align: left; /* Căn trái tiêu đề */ 
+}
+
+
+.add-course-section {
+    margin-bottom: 20px;
+}
+
+.add-course-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: left; /* Căn trái tiêu đề */
+}
+
+.add-course-input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    text-align: left; /* Căn trái tiêu đề */ /* Cho phép xuống dòng nếu cần */
+}
+
+.add-course-input-group label {
+    width: 1200px; /* Có thể tăng nếu muốn để nhãn dài hơn */
+    flex-shrink: 0;
+    margin-right: 10px;
+}
+
+.add-course-input-group input,
+.add-course-input-group textarea,
+.add-course-input-group select {
+    flex-grow: 1;
+    width: calc(100% - 210px); /* 100% trừ đi chiều rộng label + margin */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-width: 300px;
+    max-width: 100%;
+}
+
+.add-course-input-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+.add-course-input-group .add-course-edit-icon {
+    margin-left: 10px;
+    color: #f0ad4e;
+    cursor: pointer;
+}
+
+.add-course-add-new {
+    color: #28a745;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.add-course-add-new i {
+    margin-right: 5px;
+}
+
+.add-course-cover-image {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.add-course-cover-image i {
+    font-size: 24px;
+    color: #28a745;
+}
+
+.add-course-content {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.add-course-content .add-course-input-group label {
+    width: 100px;
+}
+
+.add-course-content .add-course-input-group .add-course-upload-icon {
+    margin-left: 10px;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.add-course-content .add-course-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-course-content .add-course-buttons button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-course-content .add-course-buttons .add-course-save-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.add-course-content .add-course-buttons .add-course-cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.add-course-footer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.add-course-footer-buttons button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-course-footer-buttons .add-course-create-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.add-course-footer-buttons .add-course-cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.notification-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    height: 150px;
+}
+
+.notification-box h1 {
+    font-size: 18px;
+    margin: 0 0 20px;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    
+  }
+  .course-management-card {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 6rem; /* Điều chỉnh cho header cố định */
+    margin-left: 270px; /* Điều chỉnh cho sidebar cố định */
+    width: calc(100% - 300px); /* Điều chỉnh độ rộng để phù hợp với sidebar và header */
+    padding-bottom: 40px;
+}
+
+.course-management-search-form {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto; /* Điều chỉnh để các mục nằm trên một dòng */
+    gap: 1rem; /* Giảm khoảng cách giữa các mục */
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.course-management-search-form input,
+.course-management-search-form select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+}
+
+.course-management-search-form label {
+    align-self: center;
+    font-weight: bold;
+    margin-right: 1rem; /* Giảm khoảng cách giữa nhãn và mục chọn */
+}
+
+/* Nút hành động */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-blue {
+    background-color: #3b82f6;
+}
+
+.btn-green {
+    background-color: #10b981;
+}
+
+.btn-red {
+    background-color: #ef4444;
+}
+
+.btn-yellow {
+    background-color: #f59e0b;
+}
+
+.course-management-action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.course-management-action-buttons div {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-edit {
+    color: rgb(24, 182, 255); /* Thay đổi màu của icon thành màu vàng */
+    font-size: 15px; /* Kích thước của icon */
+}
+
+/* Table container with horizontal scrolling and scroll handle */
+.table-container {
+    overflow-x: auto; /* Bật tính năng cuộn ngang */
+    margin-top: 1rem; /* Thêm khoảng cách phía trên bảng */
+    position: relative; /* Định vị cho tay cầm cuộn */
+    padding-bottom: 1rem; /* Khoảng cách phía dưới để hiện thị cuộn */
+}
+
+/* Scroll handle for better horizontal navigation */
+.table-scroll-handle {
+    display: none; /* Ẩn mặc định */
+    position: absolute;
+    bottom: 0; /* Căn chỉnh ở đáy của container */
+    left: 0;
+    width: 100%;
+    height: 8px; /* Tay cầm cuộn mỏng */
+    background-color: #e5e7eb; /* Nền màu xám nhạt */
+    cursor: pointer;
+    border-radius: 4px; /* Góc tròn cho tay cầm */
+}
+
+.table-container:hover .table-scroll-handle {
+    display: block; /* Hiện tay cầm cuộn khi hover */
+}
+
+.table-scroll-handle:hover {
+    background-color: #9ca3af; /* Màu tối hơn khi hover */
+}
+
+/* Điều chỉnh cho bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px; /* Đảm bảo cuộn ngang cho màn hình nhỏ hơn */
+}
+
+th, td {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: left;
+}
+
+td:hover {
+    background-color: #f3f4f6; /* Hiệu ứng hover cho hàng */
+}
+
+/* Căn chỉnh cột checkbox cho khoảng cách tốt hơn */
+th:first-child, td:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+/* Phân trang */
+.course-management-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.course-management-pagination select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    color: #4b5563;
+    font-size: 1rem;
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút phân trang */
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.pagination-buttons button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    background-color: #fff;
+    color: #4b5563;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-buttons button:hover {
+    background-color: #3b82f6;
+    color: #fff;
+}
+
+.pagination-buttons button:first-child {
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.pagination-buttons button:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+/* Course Form */
+.course-details {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .section .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .section .input-group label {
+    width: 150px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .section .input-group input,
+  .section .input-group textarea {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .section .input-group textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .section .input-group .edit-icon {
+    margin-left: 10px;
+    color: #f0ad4e;
+    cursor: pointer;
+  }
+  
+  .section .add-new {
+    color: #28a745;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .section .add-new i {
+    margin-right: 5px;
+  }
+  
+  .cover-image {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .cover-image i {
+    font-size: 24px;
+    color: #28a745;
+  }
+  
+  .course-content {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .course-content .input-group label {
+    width: 100px;
+  }
+  
+  .course-content .input-group .upload-icon {
+    margin-left: 10px;
+    color: #6c757d;
+    cursor: pointer;
+  }
+  
+  .course-content .buttons {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .course-content .buttons button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .course-content .buttons .save-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .course-content .buttons .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .footer-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-bottom: 40px;
+  }
+  
+  .footer-buttons button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .footer-buttons .create-btn {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .footer-buttons .cancel-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(85, 230, 255, 0.1);
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .modal h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .modal label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .modal input,
+  .modal textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .modal textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .modal button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .modal button[type="button"] {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .modal button[type="button"]:last-child {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Notification Box */
+  .notification-box {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .notification-box h1 {
+    font-size: 18px;
+    margin: 0 0 20px;
+    font-weight: bold;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .button-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .button-container .confirm {
+    background-color: #007bff;
+  }
+  
+  .button-container .cancel {
+    background-color: #dc3545;
+  }
+  
+/* Container cho mục chọn giảng viên */
+.student-selection {
+    margin: 20px 0;
+  }
+  
+  .student-selection label {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .student-selection select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+  }
+  
+  .student-selection select:focus {
+    outline: none;
+    border-color: #388e3c; /* Màu xanh khi chọn */
+  }
+  
+  .student-selection select option {
+    padding: 10px;
+  }
+  
+  /* Đảm bảo rằng dropdown có chiều cao phù hợp */
+  .student-selection select[multiple] {
+    height: 150px; /* Tăng chiều cao khi có nhiều tùy chọn */
+  }
+  
+  /* Style cho khi người dùng chọn nhiều học viên */
+  .student-selection select[multiple] option:checked {
+    background-color: #f1f1f1; /* Màu nền khi chọn */
+    color: white;
+    
+  }
+  
+  .select-instructor-group {
+    margin-bottom: 20px;
+  }
+  
+  .select-instructor-group label {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    padding: auto;
+    
+  }
+  
+  .instructor-select {
+    width: 30%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+
+  
+  
+  /* Thêm phần hiển thị nếu không có lựa chọn */
+  .student-selection select option:disabled {
+    color: #bbb;
+    background-color: #f1f1f1;
+  }
+  /* === Modal container (Confirm) === */
+.modal.confirm-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* === Modal content box === */
+.confirm-modal-content {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+/* === Title and message === */
+.confirm-modal-content h2 {
+  font-size: 22px;
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+.confirm-modal-content p {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 2rem;
+}
+
+/* === Action buttons === */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.modal-actions .btn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-actions .btn.btn-red {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.modal-actions .btn.btn-red:hover {
+  background-color: #b71c1c;
+}
+
+.modal-actions .btn.btn-green {
+  background-color: #67c5ff;
+  color: white;
+}
+
+.modal-actions .btn.btn-green:hover {
+  background-color: #22aeff;
+}
+/* Edit Course Form (same as Add Course Form) */
+.edit-course-details {
+  max-width: 1200px;
+  padding: 80px 20px 20px; /* Tránh header */
+  margin: 0 auto; /* Căn giữa ngang */
+  margin-left: calc(250px + 20px); /* Dịch sang phải tránh sidebar */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 40px;
+  text-align: left; /* Căn trái tiêu đề */ 
+
+}
+
+.edit-course-section {
+  margin-bottom: 20px;
+}
+
+.edit-course-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.edit-course-input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.edit-course-input-group label {
+  width: 150px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.edit-course-input-group input,
+.edit-course-input-group textarea,
+.edit-course-input-group select {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 1200px;
+  max-width: 100%;
+}
+
+.edit-course-input-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+.edit-course-input-group .edit-course-edit-icon {
+  margin-left: 10px;
+  color: #f0ad4e;
+  cursor: pointer;
+}
+
+.edit-course-add-new {
+  color: #28a745;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edit-course-add-new i {
+  margin-right: 5px;
+}
+
+.edit-course-cover-image {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.edit-course-cover-image i {
+  font-size: 24px;
+  color: #28a745;
+}
+
+/* Section for Course Content */
+.edit-course-content {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.edit-course-content .input-group label {
+  width: 100px;
+}
+
+.edit-course-content .input-group .upload-icon {
+  margin-left: 10px;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.edit-course-content .buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.edit-course-content .buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-course-content .buttons .save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-course-content .buttons .cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Footer Buttons */
+.edit-course-footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.edit-course-footer-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-course-footer-buttons .create-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-course-footer-buttons .cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(85, 230, 255, 0.1);
+  max-width: 800px;
+  width: 100%;
+}
+
+.modal h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.modal textarea {
+  resize: none;
+  height: 100px;
+}
+
+.modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.modal button[type="button"] {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal button[type="button"]:last-child {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Select Instructor */
+.select-instructor-group {
+  margin-bottom: 20px;
+}
+
+.select-instructor-group label {
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.instructor-select {
+  width: 30%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  margin-top: 8px;
+  padding-left: 20px;
+}
+
+/* Notification Box */
+.notification-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.notification-box h1 {
+  font-size: 18px;
+  margin: 0 0 20px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button-container .confirm {
+  background-color: #007bff;
+}
+
+.button-container .cancel {
+  background-color: #dc3545;
+}
+
+/* Mục tiêu (Objectives) Section */
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.add-new {
+  color: #F4B400;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.remove-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.save-btn, .cancel-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.cancel-btn {
+  background-color: red;
+}
+
+.edit-course-input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 80%;
+}
+
+
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.input-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove-btn i {
+  font-size: 16px;
+}
+/* Form Actions (Save and Cancel buttons) */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+/* Save Button */
+.save-btn {
+  background-color: #0479ff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+
+/* Cancel Button */
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+/* === Modal Tìm kiếm Giảng viên === */
+/* === Nút Chọn giảng viên === */
+.select-instructor-btn {
+  padding: 10px 20px; /* Kích thước nút */
+  margin-top: 10px; /* Giảm margin-top để căn chỉnh gọn hơn */
+  font-size: 14px; /* Kích thước chữ */
+  background-color: #5aacff; /* Màu nền nút */
+  color: white; /* Màu chữ */
+  border: none; /* Loại bỏ border */
+  border-radius: 5px; /* Bo góc */
+  cursor: pointer; /* Con trỏ chuột khi hover */
+  transition: background-color 0.3s, transform 0.2s; /* Hiệu ứng chuyển màu và nhấn nút */
+  display: inline-flex; /* Căn giữa text */
+  justify-content: center; /* Căn giữa text ngang */
+  align-items: center; /* Căn giữa text dọc */
+  width: 18%; /* Chiếm toàn bộ chiều rộng */
+}
+
+.select-instructor-btn:hover {
+  background-color: #1565c0; /* Màu nền khi hover */
+  transform: scale(1.05); /* Tăng kích thước khi hover */
+}
+
+.select-instructor-btn:focus {
+  outline: none; /* Loại bỏ outline mặc định */
+  box-shadow: 0 0 5px rgba(25, 118, 210, 0.6); /* Hiệu ứng khi focus */
+}
+.instructor-modal .instructor-search {
+  padding: 1rem;
+  max-height: 70vh;
+}
+
+.instructor-modal .search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.instructor-modal .search-input {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  width: 80%;
+}
+
+.instructor-modal .search-btn {
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding-right: 20px;
+}
+
+.instructor-modal .search-btn:hover {
+  background-color: #1565c0;
+}
+/* === Bảng danh sách giảng viên === */
+.instructor-modal .instructor-table-container {
+  overflow-x: auto; /* Cho phép cuộn ngang */
+  max-width: 100%;
+}
+
+.instructor-modal .instructor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  min-width: 1200px; /* Đảm bảo bảng đủ rộng để cuộn ngang */
+}
+
+.instructor-modal .instructor-table th,
+.instructor-modal .instructor-table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.instructor-modal .instructor-table th {
+  background-color: #f5f5f5;
+  color: #1976d2;
+  font-weight: bold;
+}
+
+/* Cột nút chọn (radio button) */
+.instructor-modal .instructor-table th:first-child,
+.instructor-modal .instructor-table td:first-child {
+  width: 50px; /* Chiều rộng cố định cho cột nút chọn */
+  position: sticky; /* Cố định cột khi cuộn ngang */
+  left: 0; /* Dính vào mép trái */
+  background-color: #fff; /* Nền trắng để không bị mờ */
+  z-index: 1; /* Đảm bảo cột nút chọn nằm trên các cột khác */
+  text-align: center; /* Căn giữa radio button */
+}
+
+.instructor-modal .instructor-table th:first-child {
+  background-color: #f5f5f5; /* Nền header cho cột nút chọn */
+}
+
+.instructor-modal .instructor-table td:first-child input[type="radio"] {
+  margin: 0 auto; /* Căn giữa radio button */
+}
+
+/* Modal footer */
+.instructor-modal .modal-footer {
+  display: flex;
+  justify-content: flex-start; /* Căn trái các nút */
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.instructor-modal .modal-footer button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.instructor-modal .modal-footer button.confirm {
+  background-color: #1976d2;
+  color: white;
+}
+
+.instructor-modal .modal-footer button.cancel {
+  background-color: #dc3545;
+  color: white;
+}
+.lecture-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: move;
+  display: flex;
+  align-items: center;
+}
+
+.lecture-item:hover {
+  background-color: #f1f1f1;
+}
+
+.lecture-modal .modal-content {
+  width: 700px;
+}
+
+.lecture-edit-form .input-group {
+  margin-bottom: 15px;
+}
+
+.lecture-edit-form .input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.lecture-edit-form .input-group input,
+.lecture-edit-form .input-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  
+}
+
+.sort-btn {
+  color: #14d4ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: -10px;
+    width: 100px;
+    font-size: 16px;
+
+}
+
+.save-btn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+}

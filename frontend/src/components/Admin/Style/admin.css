@@ -1,0 +1,227 @@
+/* Reset mặc định */  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+}  
+  
+/* Biến màu sắc toàn cục */  
+:root {  
+    --primary-blue: #2563eb;  
+    --secondary-blue: #007bff;  
+    --light-blue: #dbeafe;  
+    --gray-text: #4b5563;  
+    --dark-gray: #1a2526;  
+    --white: #ffffff;  
+}  
+  
+body {  
+    font-family: 'Roboto', sans-serif;  
+    background-color: #f5f5f5;  
+}  
+
+/* Sidebar */  
+.sidebar {
+    width: 250px;
+    background-color: #d1e7ff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+.sidebar h2 {
+    color: #3399ff;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    white-space: nowrap; /* Ensure items do not wrap to the next line */
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+}
+
+.sidebar ul li a.active {
+    color: #3399ff;
+    font-weight: bold;
+}
+
+.sidebar ul li a:hover {
+    color: #3399ff;
+}
+
+.sidebar ul li.logout {
+    position: absolute;
+    bottom: 20px;
+}
+
+/* Content area adjustment */
+.content {
+    margin-left: 250px; /* Ensure content is not overlapping the sidebar */
+    padding: 20px;
+    padding-top: 80px; /* Increased padding-top to accommodate header and content */
+    flex-grow: 1; /* Allow content to take up the remaining space */
+    position: relative;
+    z-index: 900; /* Ensure content is below the sidebar */
+}
+
+/* Header styling */
+.header {
+    background-color: #d1e7ff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 250px; /* Ensure header starts after the sidebar */
+    width: calc(100% - 250px); /* Ensure header spans the remaining space */
+    z-index: 1000; /* Ensure header is above other content */
+}
+
+.header h1 {
+    color: #3399ff;
+    font-size: 24px;
+}
+
+.header input {
+    width: 60%;
+    padding: 10px 20px;
+    border: 1px solid #95bfff;
+    border-radius: 9999px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.header .user-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.header .user-info i {
+    margin-right: 10px;
+    color: #0080ff;
+    cursor: pointer;
+    padding-right:30px;
+    font-size: 22px;
+}
+
+.header .user-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.header .user-info span {
+    font-size: 16px;
+    color: #3399ff;
+}
+
+/* Dropdown menu */
+.header .dropdown-menu {
+    position: absolute;
+    top: 60px;
+    right: 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    width: 200px;
+    border: #8cc5ff;
+}
+
+.header .dropdown-menu button {
+    background-color: #fffafa;
+    color: #000000;
+    border-color:  #8cc5ff;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+}
+
+.header .dropdown-menu button:hover {
+    background-color: #daecff;
+}.notifications-dropdown {  
+    position: absolute;  
+    top: 50px;  
+    right: 20px; /* canh lại khoảng cách cho hợp lý */  
+    background: #fff;  
+    border: 1px solid #ddd;  
+    border-radius: 8px;  
+    padding: 15px 20px;  
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  
+    width: 340px;  /* không nên dùng % quá lớn */  
+    max-height: 400px;  
+    overflow-y: auto;  
+    text-align: left;  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    transition: all 0.3s ease;  
+    z-index: 1000;  
+  }  
+  
+  .notifications-dropdown p {  
+    margin: 0;  
+    padding: 10px 0;  
+    border-bottom: 1px solid #f0f0f0;  
+    color: #333;  
+    font-size: 14px;  
+    cursor: default;  
+    transition: background-color 0.3s ease;  
+  }  
+  
+  .notifications-dropdown p:last-child {  
+    border-bottom: none;  
+  }  
+  
+  .notifications-dropdown p:hover {  
+    background-color: #f9f9f9;  
+  }  
+  
+  /* Thêm icon nhỏ bên trái nếu muốn */  
+  .notifications-dropdown p::before {  
+    content: "🔔";  /* icon chuông */  
+    margin-right: 10px;  
+    font-size: 16px;  
+    vertical-align: middle;  
+  }  
+  
+  /* Scrollbar nhẹ nhàng */  
+  .notifications-dropdown::-webkit-scrollbar {  
+    width: 6px;  
+  }  
+  
+  .notifications-dropdown::-webkit-scrollbar-thumb {  
+    background-color: rgba(0,0,0,0.1);  
+    border-radius: 3px;  
+  }

@@ -1,0 +1,669 @@
+/* Container Styles */
+.learn1-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: #f9f9f9;
+  padding-top: 40px;
+  padding: 20px;
+  text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+/* Left Section Styles */
+.learn1-left-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Keep column layout for main section */
+}
+
+/* Video and Content Section Styles */
+.learn1-video-content {
+  display: flex;
+  flex-direction: row; /* Align video and content side by side */
+}
+
+/* Video Section Styles */
+.learn1-video-section {
+  width: 100%; /* Adjust width to fit alongside content */
+  margin-right: 40px; 
+  margin-bottom: 20px;
+}
+
+.learn1-video-section h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.learn1-video-section video {
+  width: 100%; /* Adjust width to fit the section */
+  height: auto;
+  border: 2px solid #bceaff;
+  border-radius: 8px;
+
+}
+.learn1-content-rating {
+  width: 40%;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
+  background-color: #fff;
+  position: relative;
+  margin-left: 40px;
+  padding-top: 10px;
+}
+
+.learn1-content-list {
+  max-height: 678px;
+  overflow-y: auto;
+  padding-top: 50px;
+}
+
+.learn1-content-list h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #389fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.learn1-content-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.learn1-content-list ul li {
+  font-size: 18px;
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  max-height: none; /* Loại bỏ giới hạn chiều cao */
+  overflow-y: auto; /* Cho phép cuộn */
+  display: flex; /* Use flexbox to align content and icon */
+  justify-content: space-between; /* Space between lesson name and lock icon */
+  align-items: center; /* Vertically center the content and icon */
+}
+
+.learn1-content-list ul li:last-child {
+  border-bottom: none;
+}
+
+.learn1-content-list ul li:hover {
+  background-color: #a5ccff;
+  transition: background-color 0.3s ease;
+}
+
+/* Style for the lock icon */
+.learn1-content-list ul li .fa-lock {
+  font-size: 16px; /* Match the size in the image */
+  color: #666; /* Dark gray color to match the image */
+  margin-left: 8px; /* Ensure some spacing between text and icon */
+}
+
+/* Navigation and Rating Buttons */
+.navigation-rating-buttons {
+  display: flex;
+  justify-content: center; /* Center the navigation buttons */
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* Increased space between the buttons */
+}
+
+.previous-button {
+  padding: 20px 25px; /* Increased padding for larger button */
+  font-size: 18px; /* Increased font size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: #469fff; /* Changed background color */
+  color: white;
+}
+
+.previous-button:hover {
+  background-color: #0052ce; /* Darker shade on hover */
+  box-shadow: 0 0 10px rgba(0, 82, 206, 0.5);
+}
+
+.next-button {
+  padding: 20px 25px; /* Increased padding for larger button */
+  font-size: 18px; /* Increased font size */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  background-color: #469fff; /* Changed background color */
+  color: white;
+}
+
+.next-button:hover {
+  background-color: #0052ce; /* Darker shade on hover */
+  box-shadow: 0 0 10px rgba(0, 82, 206, 0.5);
+}
+
+.rate-button {  
+  position: fixed;  
+  bottom: 10px;  /* Khoảng cách từ mép dưới */  
+  right: 6rem;   /* Khoảng cách từ mép phải */  
+  padding: 15px 20px;  
+  font-size: 18px;  
+  border: none;  
+  border-radius: 4px;  
+  cursor: pointer;  
+  transition: transform 0.3s ease;  
+  background-color: #47daff;  
+  color: white;  
+}  
+
+.rate-button:hover {  
+  background-color: #3cb9e0;  
+  transform: scale(1.1);  
+}
+/* Rating Popup */
+.rating-popup {
+  position: fixed; /* Changed to fixed for centering */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 40px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.rating-popup h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 24px;
+}
+
+.rating-popup .stars {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.rating-popup .stars i {
+  font-size: 24px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.rating-popup .stars i.selected {
+  color: #ffd700;
+}
+
+.rating-popup .comment-input {
+  width: 100%;
+  height: 100px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.rating-popup .confirm-button,
+.rating-popup .close-rating-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.rating-popup .confirm-button {  
+  background-color: #47daff;  
+  color: white;  
+  margin-right: 50%; /* Tăng khoảng cách bên phải */  
+}  
+
+.rating-popup .close-rating-button {  
+  background-color: #ddd;  
+  color: black;  
+}  
+
+.rating-popup .confirm-button:hover {
+  background-color: #3cb9e0;
+  
+}
+
+.rating-popup .close-rating-button:hover {
+  background-color: #bbb;
+}
+
+/* Progress, Notes, and Q&A Styles */
+.learn1-info-section {
+  margin-bottom: 20px;
+}
+
+.learn1-progress-notes-qa {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width:100%;
+  padding: 0px 10px; /* Add horizontal padding */
+}
+
+.learn1-progress {
+  text-align: center;
+}
+
+.notes-button {
+  text-align: right;
+  margin-right: 65%;
+  background-color: #d6d6d6;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notes-button i {
+  margin-right: 5px;
+}
+.qa-button {
+  text-align: right;
+  background-color: #45daff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;  
+  cursor: pointer;
+}
+
+.qa-button i {
+  margin-right: 5px;
+}
+
+.qa-button:hover {
+background-color: #5699ff; /* Change background color on hover */
+color: #fff; /* Change text color on hover */
+box-shadow: 0 0 10px rgba(110, 209, 255, 0.5); /* Add shadow effect */
+cursor: pointer; /* Ensure cursor remains a pointer */
+}
+  
+.qa-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 1200px;
+  min-height: 80%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.qa-popup h3 {
+  margin-top: 0;
+}
+
+.qa-popup .comments-list {
+  max-height: 700px; /* Adjust as needed */
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.qa-popup .comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.qa-popup .comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.qa-popup .comment-details {
+  flex: 1;
+}
+
+.qa-popup .comment-user {
+  font-weight: bold;
+}
+
+.qa-popup .comment-timestamp {
+  font-size: 0.8em;
+  color: #888;
+}
+
+.qa-popup .comment-content {
+  margin-top: 5px;
+}
+
+.qa-popup .new-comment-section {
+  display: flex;
+  align-items: center;
+}
+
+.qa-popup .new-comment-input {
+  flex: 1;
+  height: 60px; /* Adjust as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.qa-popup .send-comment-button {
+  background-color: #47daff;
+  border: none;
+  padding: 20px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.qa-popup .send-comment-button i {
+  margin-right: 5px;
+}
+
+.qa-popup .send-comment-button:hover {
+  background-color: #3cb9e0;
+  transform: scale(1.1);  
+  cursor: default; 
+}
+
+.close-qa-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.close-qa-button:hover {
+  color: #ff0000;
+}
+
+.notes-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 1200px;
+  min-height: 80%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it's above other elements */
+}
+
+.notes-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.notes-dropdown {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  text-align: center;
+}
+
+.notes-dropdown select {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  font-size: 16px;
+}
+
+.notes-input {
+  width: calc(100% - 10px);
+  height: 600px;
+  margin-top: 20px;
+  padding: 30px;
+  border: 1px solid #6d6d6d;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+}
+
+.notes-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex; /* Ensure the buttons are aligned horizontally */
+  gap: 10px; /* Space between buttons */
+}
+
+.close-notes-button,
+.save-note-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Save button styling */
+.save-note-button {
+  background-color: #007bff; /* Blue color for close */
+  color: white;
+}
+
+/* Close button styling */
+.close-notes-button {
+  background-color: #007bff; /* Blue color for close */
+  color: white;
+}
+
+
+/* Previous and Next Button Styles */
+.learn1-left-section .navigation-buttons {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+
+}
+
+.learn1-left-section .navigation-buttons button {
+  margin: 0 20px;
+  padding: 15px 25px;
+  font-size: 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.learn1-left-section .navigation-buttons button:hover {
+  background-color: #0056b3;
+}
+.rating-section {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating-section h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.stars {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.stars .fa-star {
+  font-size: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.stars .fa-star.selected {
+  color: #ffcc00;
+}
+
+.comment-input {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  resize: none;
+  transition: border-color 0.3s ease;
+}
+
+.comment-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.confirm-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.percentage {
+  fill: #666;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+/* Transition Effects */
+.learn1-navigation button,
+.qa-button,
+.rate-button,
+.lesson-button {
+  transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition for hover effects */
+}
+
+/* Icon Styles */
+.lock-icon {
+  margin-left: 10px; /* Space between lesson title and icon */
+  color: #b0b0b0; /* Lock icon color */
+}
+
+/* Spacing for Q&A and Rating Buttons */
+.learn1-qa-rate {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .learn1-container {
+    flex-direction: column; /* Stack contents vertically on small screens */
+  }
+
+  .learn1-left-section,
+  .learn1-content-list {
+    width: 100%; /* Full width for both sections */
+    margin-left: 0; /* Remove left margin */
+  }
+
+  .learn1-navigation {
+    flex-direction: column; /* Stack navigation buttons vertically */
+    align-items: center; /* Center buttons */
+  }
+
+  .learn1-navigation button {
+    width: 100%; /* Full width for buttons */
+    margin: 5px 0; /* Space between buttons */
+  }
+
+  .progress-circle {
+    width: 80px; /* Smaller circle on mobile */
+    height: 80px;
+  }
+
+  .circular-chart {
+    max-width: 100%; /* Scale properly to fit smaller screens */
+  }
+}
+.popup-confirmation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #00ccff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-content button:hover {
+  background-color: #0063ed;
+}

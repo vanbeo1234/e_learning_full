@@ -1,0 +1,158 @@
+/* Container */
+.courseReactJS-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  padding-top: 20px;
+  text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+/* Course Info */
+.courseReactJS-info {
+  width: 60%;
+  
+}
+
+.courseReactJS-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+  
+}
+
+.courseReactJS-info p {
+  font-size: 16px;
+  color: #505050;
+  max-width: 800px;
+  padding-bottom: 10px;
+}
+
+.courseReactJS-stars {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.courseReactJS-stars h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.courseReactJS-stars i {
+  color: #020202;
+  font-size: 20px;
+  margin-right: 5px;
+  padding: 5px;
+}
+/* Video Section (thay thế Image Section) */
+.courseReactJS-image-section {
+position: absolute;
+top: 12%;
+right: 8%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+/* Thay thế cho .courseReactJS-image */
+.courseReactJS-video-wrapper {
+width: 500px;
+height: 300px;
+border-radius: 30px;
+overflow: hidden;
+margin-bottom: 30px;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.courseReactJS-video-wrapper iframe {
+width: 100%;
+height: 100%;
+border: none;
+border-radius: 15px;
+}
+
+/* Giữ nguyên phần thời gian và nút */
+.courseReactJS-date-time {
+text-align: right;
+margin-bottom: 10px;
+padding: 30px;
+}
+
+.courseReactJS-date-time p {
+display: flex;
+align-items: center;
+margin: 10px 0;
+}
+
+.courseReactJS-date-time i {
+margin-right: 5px;
+}
+
+.courseReactJS-register-button button {
+background-color: #1f78cc;
+color: #ffffff;
+padding: 15px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.courseReactJS-register-button button:hover {
+background-color: #235eff;
+}
+
+/* Course Content */
+.courseReactJS-content {
+width: 60%;
+margin-top: 10px;
+margin-bottom: 40px;
+margin-left: 20px;
+text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+.courseReactJS-content h3 {
+font-size: 24px;
+margin-bottom: 10px;
+color: #333;
+}
+
+.courseReactJS-accordion {
+border: 1px solid #ebebeb;
+border-radius: 5px;
+margin-bottom: 10px;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item {
+border-bottom: 1px solid #d1d1d1;
+border-radius: 10px;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item:last-child {
+border-bottom: none;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button {
+width: 100%;
+text-align: left;
+padding: 15px;
+background-color: #fff;
+border: none;
+outline: none;
+cursor: pointer;
+font-size: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button:hover {
+background-color: #a5ccff;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button i {
+font-size: 16px;
+}

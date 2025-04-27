@@ -1,0 +1,1255 @@
+/* Reset mặc định */  
+* {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+}  
+
+/* Biến màu sắc toàn cục */  
+:root {  
+  --primary-blue: #2563eb;  
+  --secondary-blue: #007bff;  
+  --light-blue: #dbeafe;  
+  --gray-text: #4b5563;  
+  --dark-gray: #1a2526;  
+  --white: #ffffff;  
+}  
+
+body {  
+  font-family: 'Roboto', sans-serif;  
+  background-color: #f5f5f5;  
+}  
+
+.container {  
+  display: flex;  
+  height: 100vh; /* Đảm bảo chiều cao bao quát */  
+}  
+/*login vaf singup*/
+
+
+
+
+.sidebar {  
+  width: 250px; /* Width của sidebar */  
+  background-color: #d1e7ff;  
+  padding: 20px;
+  position: fixed; /* Giữ sidebar cố định */  
+  top: 0; /* Đặt vị trí ở trên cùng */  
+  left: 0; /* Đặt vị trí ở bên trái */  
+  height: 100vh; /* Đảm bảo sidebar không bị ngắn */  
+  box-sizing: border-box;  
+}  
+
+.sidebar h2 {  
+  color: #3399ff;  
+  font-size: 30px;
+  margin-bottom: 20px;  
+}  
+
+.sidebar ul {  
+  list-style: none;  
+  padding: 10px;
+}  
+
+.sidebar ul li {  
+  margin-bottom: 20px;  
+  padding: 10px 0px;
+  white-space: nowrap; /* Ensure items do not wrap to the next line */
+}  
+
+.sidebar ul li a {  
+  text-decoration: none;  
+  color: #333;  
+  font-size: 18px;  
+  display: flex;  
+  align-items: center;  
+}  
+
+.sidebar ul li a i {  
+  margin-right: 10px;  
+}  
+
+.sidebar ul li a.active {  
+  color: #3399ff;  
+  font-weight: bold;  
+}  
+
+.sidebar ul li a:hover {  
+  color: #3399ff;  
+}  
+
+.sidebar ul li.logout {  
+  position: absolute;  
+  bottom: 20px;  
+}  
+
+.content {  
+  flex-grow: 1; /* Cho phép content chiếm không gian còn lại */  
+  margin-left: 250px; /* Đảm bảo nội dung không chồng lên sidebar */  
+  padding: 20px;  
+  padding-top: 60px; /* Đảm bảo nội dung không bị che bởi header */  
+}  
+
+/* Header */  
+.header {  
+  background-color: #d1e7ff;  
+  padding:14px 20px;
+  display: flex;  
+  justify-content: space-between;  
+  align-items: center;  
+  border-radius: 5px;  
+  position: fixed; /* Tọa độ cố định chứng tỏ thanh header */  
+  top: 0; /* Đặt vị trí ở trên cùng */  
+  right: 0; /* Đảm bảo không có khoảng cách bên phải */  
+  left: 250px; /* Đặt từ vị trí bắt đầu x = 250px để tránh găp sidebar */  
+  width: calc(100% - 250px); /* Tính toán chiều rộng của header */  
+  z-index: 1000;  
+}
+
+.header h1 {  
+  color: #3399ff;  
+  font-size: 24px;  
+}  
+
+.header input {  
+  width: 60%;
+  padding: 10px 20px;
+  border: 1px solid #95bfff;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  margin: 0;
+}  
+ 
+.header .user-info {  
+  display: flex;  
+  align-items: center;  
+  position: relative;  
+}  
+
+.header .user-info i {  
+  margin-right: 10px;  
+  color: #0080ff;  
+  cursor: pointer; 
+  padding-right:30px;
+  font-size: 22px;
+}  
+
+.header .user-info img {  
+  border-radius: 50%;  
+  width: 40px;  
+  height: 40px;  
+  margin-right: 10px;  
+  cursor: pointer;  
+}  
+
+.header .user-info span {  
+  font-size: 16px;  
+  color: #3399ff;  
+}  
+/* Dropdown menu */
+.header .dropdown-menu {  
+  position: absolute;  
+  top: 60px; /* Adjusted to appear below the avatar */
+  right: 12px;
+  background-color: #fff;  
+  border: 1px solid #ccc;  
+  border-radius: 4px;  
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+  padding: 10px;  
+  display: flex;  
+  flex-direction: column;  
+  z-index: 1000; /* Ensure it appears above other elements */
+  width: 200px; /* Increase width */
+  border: #8cc5ff;
+}
+
+.header .dropdown-menu button {  
+  background-color: #fffafa;  
+  color: #000000;  
+  border-color:  #8cc5ff;
+  padding: 10px;  
+  margin: 5px 0;  
+  border-radius: 8px;
+  cursor: pointer;  
+  text-align: left; /* Align text to the left */
+  width: 100%; /* Ensure buttons take full width */
+}  
+
+.header .dropdown-menu button:hover {  
+  background-color: #daecff; 
+}
+.notifications-dropdown {  
+  position: absolute;  
+  top: 50px;  
+  right: 20px; /* canh lại khoảng cách cho hợp lý */  
+  background: #fff;  
+  border: 1px solid #ddd;  
+  border-radius: 8px;  
+  padding: 15px 20px;  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);  
+  width: 340px;  /* không nên dùng % quá lớn */  
+  max-height: 400px;  
+  overflow-y: auto;  
+  text-align: left;  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+  transition: all 0.3s ease;  
+  z-index: 1000;  
+}  
+
+.notifications-dropdown p {  
+  margin: 0;  
+  padding: 10px 0;  
+  border-bottom: 1px solid #f0f0f0;  
+  color: #333;  
+  font-size: 14px;  
+  cursor: default;  
+  transition: background-color 0.3s ease;  
+}  
+
+.notifications-dropdown p:last-child {  
+  border-bottom: none;  
+}  
+
+.notifications-dropdown p:hover {  
+  background-color: #f9f9f9;  
+}  
+
+/* Thêm icon nhỏ bên trái nếu muốn */  
+.notifications-dropdown p::before {  
+  content: "🔔";  /* icon chuông */  
+  margin-right: 10px;  
+  font-size: 16px;  
+  vertical-align: middle;  
+}  
+
+/* Scrollbar nhẹ nhàng */  
+.notifications-dropdown::-webkit-scrollbar {  
+  width: 6px;  
+}  
+
+.notifications-dropdown::-webkit-scrollbar-thumb {  
+  background-color: rgba(0,0,0,0.1);  
+  border-radius: 3px;  
+}
+/* Course List */
+.courses {
+  padding: 3rem 0px;
+}
+
+.courses-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-blue);
+  margin-bottom: 2rem;
+ 
+}
+
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 10px;
+}
+
+.course-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-template-columns: repeat(4, 1fr); /* Ensure each row has 4 courses */
+  gap: 40px 40px;
+  
+}
+
+.course {
+  background-color: var(--light-blue);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.course:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(14, 13, 13, 0.15);
+}
+
+.course-image {
+  width:222px;
+  height: 150px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border-radius: 0.5rem;
+}
+
+.course-title {
+  color: var(--primary-blue);
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-duration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-blue);
+  margin-top: 0.5rem;
+}
+
+.course-duration i {
+  margin-right: 0.5rem;
+}
+
+.course-text {
+  color: var(--gray-text);
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+.course-button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.course-button:hover {
+  background-color: #1d4ed8;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.pagination div {
+  width: 30px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 9999px;
+  transition: background 0.3s ease;
+}
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px; /* Add spacing between buttons */
+  margin-top: 20px;
+}
+
+.pagination-buttons button {
+  padding: 8px 16px;
+  background: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.pagination-buttons button.active {
+  background: #8adaff; /* Change to a different color for the active button */
+}
+
+.pagination-buttons button:hover {
+  background: #8adaff; /* Change to a different color on hover */
+}
+
+.pagination div.active {
+  background: #1d78ff; /* Change to a different color for the active dot */
+}
+/* Feedback List */
+/* Sửa phần .search-bar để đảm bảo các nút và input có kiểu dáng giống nhau */
+.search-bar {
+  display: flex;
+  justify-content: space-between; /* Đẩy Học viên sang trái, Tìm kiếm sang phải */
+  margin: 20px 0;
+  align-items: center; /* Căn giữa theo chiều dọc */
+    text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+.search-bar-middle {
+  display: flex;
+  gap: 20px; /* Khoảng cách đều giữa Khóa học và Ngày tìm kiếm */
+  align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+.search-bar input,
+.search-bar button {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar input:not([type="date"]) {
+  flex: none;
+  width: 350px; /* Chiều rộng cố định cho Học viên và Khóa học */
+  padding: 8px;
+}
+
+.search-bar input[type="date"] {
+  flex: none;
+  width: 150px; /* Chiều rộng cho Ngày tìm kiếm */
+  padding: 8px;
+}
+
+.search-bar button {
+  flex: none;
+  width: 120px; /* Chiều rộng cho nút Tìm kiếm */
+  padding: 8px 16px;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #2563eb;
+}
+
+.search-bar label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+}
+
+.search-bar label input,
+.search-bar label select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar select {
+  width: 100%;
+  cursor: pointer;
+}
+
+.search-bar label span {
+  font-size: 14px;
+  color: #666;
+}
+.search-bar button {
+padding: 10px 20px;
+background-color: #3b82f6; /* Màu xanh lam */
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.search-bar button:hover {
+background-color: #2563eb; /* Màu xanh lam đậm hơn khi hover */
+}
+
+.table-container {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-controls {
+  margin-bottom: 10px;
+}
+
+.table-controls label,
+.table-controls select,
+.table-controls span {
+  margin-right: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ebebeb;
+}
+
+table th {
+  background-color: #efefef;
+  width: 10px;
+}
+
+table td button {
+  background-color: #3399ff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table td button:hover {
+  background-color: #007bff;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a,
+.pagination button {
+  padding: 10px 15px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination a.active,
+.pagination button.active {
+  background-color: #3399ff;
+  color: #fff;
+  border: none;
+}
+
+.pagination a:hover,
+.pagination button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+  /* Nền mờ */
+.feedback-popup-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Slide popup */
+.feedback-popup-slide {
+  background: #ffffff;
+  width: 800px;
+  height: 100%;
+  padding: 0;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  animation: slideInRight 0.3s forwards;
+  z-index: 1000;
+  text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+
+/* Slide animation */
+@keyframes slideInRight {
+  to {
+    transform: translateX(0);
+  }
+}
+
+.popup-close-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.popup-comments-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+  padding-bottom: 100px; /* chừa khoảng trống dưới cùng để không bị che */
+}
+
+
+.popup-comment {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px; /* <-- tăng từ 12px lên 20px */
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+
+.popup-comment-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.popup-comment-details {
+  background: #f4f6f8;
+  padding: 10px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.popup-comment-user {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.popup-comment-timestamp {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.popup-comment-content {
+  font-size: 14px;
+  color: #333;
+}
+
+.popup-new-comment {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #ccc;
+  background-color: #f5f5f5;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+
+
+.popup-new-comment textarea {
+  flex: 1;
+  resize: none;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 60px;
+  margin-right: 10px;
+}
+
+.popup-new-comment button {
+  background-color: #4fe1f8;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-new-comment button:hover {
+  background-color: #229fff;
+}
+
+
+/* Course Form */
+.course-details {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: left;    /* ✅ Không dùng fixed nữa */
+
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.section .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section .input-group label {
+  width: 150px;
+  font-weight: bold;
+  color: #333;
+}
+
+.section .input-group input,
+.section .input-group textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.section .input-group textarea {
+  resize: none;
+  height: 100px;
+}
+
+.section .input-group .edit-icon {
+  margin-left: 10px;
+  color: #f0ad4e;
+  cursor: pointer;
+}
+
+.section .add-new {
+  color: #28a745;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+
+.section .add-new i {
+  margin-right: 5px;
+}
+
+.cover-image {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333; /* Màu chữ của label */
+}
+
+.input-group select {
+  width: 20%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc; /* Viền nhẹ */
+  border-radius: 4px;
+  background-color: #f9f9f9; /* Màu nền cho dropdown */
+  color: #333; /* Màu chữ trong dropdown */
+  cursor: pointer;
+  transition: all 0.3s ease; /* Hiệu ứng khi hover */
+}
+
+.input-group select option {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.cover-image i {
+  font-size: 24px;
+  color: #28a745;
+}
+
+.course-content {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.course-content .input-group label {
+  width: 100px;
+}
+
+.course-content .input-group .upload-icon {
+  margin-left: 10px;
+  color: #6c757d;
+  cursor: pointer;
+}
+
+.course-content .buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.course-content .buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.course-content .buttons .save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.course-content .buttons .cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.footer-buttons button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.footer-buttons .create-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.footer-buttons .cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.notification-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  height: 150px
+}
+
+.notification-box h1 {
+  font-size: 18px;
+  margin: 0 0 20px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.button-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.button-container .confirm {
+  background-color: #007bff;
+}
+
+.button-container .cancel {
+  background-color: #dc3545;
+}
+/* Container */
+.courseReactJS-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  padding-top: 20px;
+  text-align: left;
+}
+
+/* Course Info */
+.courseReactJS-info {
+  width: 60%;
+}
+
+.courseReactJS-info h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.courseReactJS-info p {
+  font-size: 16px;
+  color: #505050;
+  max-width: 800px;
+  padding-bottom: 10px;
+}
+
+/* Learn What You Get */
+.courseReactJS-learn-what-you-get {
+  margin-bottom: 20px;
+}
+
+.courseReactJS-learn-what-you-get h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.courseReactJS-item {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  font-size: 16px;
+  color: #505050;
+}
+
+.courseReactJS-item i {
+  margin-right: 10px;
+  color: #1f78cc;
+}
+
+/* Video Section */
+.courseReactJS-image-section {
+  position: absolute;
+  top: 12%;
+  right: 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.courseReactJS-video-wrapper {
+  width: 500px;
+  height: 300px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.courseReactJS-video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 15px;
+}
+
+/* Date and Time */
+.courseReactJS-date-time {
+  text-align: right;
+  margin-bottom: 10px;
+  padding: 30px;
+}
+
+.courseReactJS-date-time p {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.courseReactJS-date-time i {
+  margin-right: 5px;
+}
+
+/* Register Button */
+.courseReactJS-register-button button {
+  background-color: #1f78cc;
+  color: #ffffff;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.courseReactJS-register-button button:hover {
+  background-color: #235eff;
+}
+
+/* Course Content */
+.courseReactJS-content {
+  width: 60%;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  margin-left: 20px;
+  text-align: left;
+}
+
+.courseReactJS-content h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.courseReactJS-accordion {
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item {
+  border-bottom: 1px solid #d1d1d1;
+  border-radius: 10px;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button {
+  width: 100%;
+  text-align: left;
+  padding: 15px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button:hover {
+  background-color: #a5ccff;
+}
+
+.courseReactJS-accordion .courseReactJS-accordion-item button i {
+  font-size: 16px;
+}
+
+/* Popup Confirmation */
+.courseReactJS-popup-confirmation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.courseReactJS-popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.courseReactJS-popup-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.courseReactJS-popup-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #505050;
+}
+
+.courseReactJS-popup-content button {
+  background-color: #1f78cc;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.courseReactJS-popup-content button:hover {
+  background-color: #235eff;
+}
+/*Course Table*/
+.course-table-card {
+max-width: 100%;
+margin: 0 auto;
+padding-top: 40px;
+padding-bottom: 20px;
+
+}
+
+.course-table-search-form {
+  display: flex; /* Sử dụng flexbox thay vì grid */
+  flex-wrap: wrap; /* Cho phép các phần tử xuống dòng nếu không đủ không gian */
+  justify-content: flex-start; /* Căn lề trái */
+  gap: 1rem; /* Khoảng cách đều nhau giữa các phần tử */
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.course-table-search-form input,
+.course-table-search-form select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  min-width: 150px; /* Đảm bảo input có chiều rộng tối thiểu */
+}
+
+.course-table-search-form label {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  gap: 0.5rem; /* Khoảng cách giữa label và input */
+  font-weight: bold;
+}
+.learning-time-section {
+margin-bottom: 1.5rem;
+}
+
+.learning-time-row {
+display: flex;
+justify-content: space-between;
+gap: 2rem;
+}
+
+.learning-time-input {
+display: flex;
+align-items: center;
+gap: 1rem;
+flex: 1;
+}
+
+.learning-time-input label {
+white-space: nowrap;
+font-weight: bold;
+color: #5a6270;
+font-size: 1.2rem;
+}
+
+.learning-time-input input[type="date"] {
+flex: 1;
+padding: 10px 12px;
+border: 2px solid #cccccc;
+border-radius: 8px;
+font-size: 0.8rem;
+color: #333;
+background-color: white;
+}
+
+.learning-time-error {
+color: red;
+font-size: 0.85rem;
+margin-top: 4px;
+}
+
+/* Nút hành động */
+.btn {
+padding: 0.6rem 2rem;
+border: none;
+border-radius: 0.25rem;
+color: white;
+cursor: pointer;
+}
+
+.btn-blue {
+background-color: #3b82f6;
+}
+
+.btn-green {
+background-color: #10b981;
+}
+
+.course-table-action-buttons {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+margin-bottom: 1rem;
+}
+
+.course-table-action-buttons div {
+display: flex;
+gap: 0.5rem;
+}
+
+.icon-edit {
+color: rgb(24, 182, 255);
+font-size: 15px;
+}
+
+.icon-edit:hover {
+  color: #1d4ed8; /* Màu đậm hơn khi hover */
+}
+
+/* Responsive: Điều chỉnh cho màn hình nhỏ */
+@media (max-width: 1500px) {
+  th, td {
+    padding: 0.5rem 0.75rem; /* Giảm padding để tiết kiệm không gian */
+  }
+
+  .table-container {
+    min-width: 100%; /* Thu nhỏ về 100% nếu màn hình nhỏ hơn 1500px */
+  }
+
+  table {
+    width: 100%; /* Thu nhỏ bảng về 100% */
+  }
+
+}
+
+.pagination-buttons {
+display: flex;
+justify-content: center;
+gap: 0.5rem;
+margin-top: 1rem;
+}
+
+.pagination-buttons button {
+padding: 0.5rem 1rem;
+border: 1px solid #d1d5db;
+background-color: #fff;
+color: #4b5563;
+cursor: pointer;
+font-size: 1rem;
+border-radius: 0.25rem;
+transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-buttons button:hover {
+background-color: #3b82f6;
+color: #fff;
+}
+
+.pagination-buttons button:first-child {
+border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.pagination-buttons button:last-child {
+border-radius: 0 0.25rem 0.25rem 0;
+}
+

@@ -1,0 +1,16 @@
+{
+    "properties": [
+      {
+        "name": "app.jwt.expiration",
+        "type": "java.lang.Long",
+        "description": "Thời gian hết hạn của JWT (tính bằng milliseconds).",
+        "defaultValue": 86400000
+      },
+      {
+        "name": "app.jwt.prefix",
+        "type": "java.lang.String",
+        "description": "Tiền tố của JWT token trong header Authorization.",
+        "defaultValue": "Bearer"
+      }
+    ]
+  }

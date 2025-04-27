@@ -1,0 +1,624 @@
+/* === USER MANAGEMENT CONTAINER === */
+.table-container {
+  max-height: 500px; /* Giới hạn chiều cao bảng, có thể điều chỉnh */
+  margin-top: 1rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+/* === USER MANAGEMENT CONTENT === */
+.user-management-content {
+  flex: 0; /* Chiếm toàn bộ không gian còn lại */
+  overflow: hidden; /* Đảm bảo không có thanh cuộn bên ngoài */
+  display: flex;
+  flex-direction: column;
+}
+
+/* === USER MANAGEMENT CARD === */
+.user-management-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 6rem;
+  margin-left: 270px;
+  margin-right: 20px;
+  width: calc(100% - 290px);
+  max-width: 100%;
+  padding-bottom: 40px;
+  overflow: hidden; /* Ngăn thanh cuộn xuất hiện ở đây */
+}
+
+/* === SEARCH FORM === */
+.user-management-search-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.user-management-search-form label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+}
+
+/* Căn lề trái cho Họ và tên */
+.user-management-search-form label.align-left {
+  justify-self: start;
+}
+
+/* Căn lề phải cho Trạng thái */
+.user-management-search-form label.align-right {
+  justify-self: end;
+}
+
+/* Dịch sang phải một chút cho Ngày sinh và Vai trò */
+.user-management-search-form label.shift-right {
+  margin-left: 2rem; /* Dịch sang phải 1rem (16px) */
+}
+
+.user-management-search-form input,
+.user-management-search-form select {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.user-management-search-form input[type="date"],
+.user-management-search-form select[name="role"],
+.user-management-search-form select[name="status"] {
+  flex: none;
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+}
+
+/* === ACTION BUTTONS === */
+.user-management-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem; /* Tăng từ 0.5rem lên 1rem để các nút cách đều nhau hơn */
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-blue { background-color: #3b82f6; }
+.btn-green { background-color: #10b981; }
+.btn-red { background-color: #ef4444; }
+.btn-yellow { background-color: #f59e0b; }
+
+/* === TABLE === */
+.table-container {
+  overflow-x: auto; /* Thanh cuộn ngang */
+  overflow-y: auto; /* Thanh cuộn dọc */
+  max-height: 500px; /* Giới hạn chiều cao bảng, có thể điều chỉnh */
+  margin-top: 1rem;
+  position: relative;
+  flex: 1; /* Chiếm không gian còn lại trong user-management-card */
+  border: 1px solid #e5e7eb; /* Viền nhẹ cho bảng */
+  border-radius: 0.5rem; /* Bo góc nhẹ */
+}
+
+.table-container table {
+  width: 100%;
+  table-layout: fixed; /* Cố định layout để các cột không thay đổi kích thước */
+  min-width: 1300px; /* Đảm bảo bảng đủ rộng để cuộn ngang */
+  border-collapse: collapse; /* Gộp viền */
+}
+
+/* Định dạng các ô trong header */
+.table-container th {
+  padding: 0.75rem; /* Khoảng cách bên trong */
+  font-weight: 600; /* Chữ đậm */
+  color: #374151; /* Màu chữ xám đậm */
+  text-align: center; /* Căn giữa */
+  font-size: 14px; /* Kích thước chữ */
+  white-space: normal; /* Cho phép xuống dòng trong header nếu cần */
+}
+
+/* Định dạng các ô trong body */
+.table-container td {
+  padding: 0.75rem; /* Khoảng cách bên trong */
+  font-size: 14px; /* Kích thước chữ */
+  color: #374151; /* Màu chữ */
+  text-align: left; /* Căn trái để dễ đọc hơn */
+  white-space: normal; /* Cho phép xuống dòng tự nhiên */
+  overflow-wrap: anywhere; /* Ngắt dòng ở bất kỳ ký tự nào nếu cần */
+  word-break: break-word; /* Ngắt từ nếu cần */
+  vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+/* Hiệu ứng hover trên dòng */
+.table-container tbody tr:hover {
+  background-color: #f3f4f6; /* Màu nền khi hover */
+}
+
+/* Điều chỉnh chiều rộng các cột để cân đối */
+/* Cột Checkbox */
+.table-container th:nth-child(1),
+.table-container td:nth-child(1) {
+  width: 40px;
+  text-align: center;
+}
+
+/* Cột STT */
+.table-container th:nth-child(2),
+.table-container td:nth-child(2) {
+  width: 50px;
+  text-align: center;
+}
+
+/* Cột Mã */
+.table-container th:nth-child(3),
+.table-container td:nth-child(3) {
+  width: 70px;
+  text-align: center;
+}
+
+/* Cột Họ và tên */
+.table-container th:nth-child(4),
+.table-container td:nth-child(4) {
+  width: 150px;
+}
+
+/* Cột Email */
+.table-container th:nth-child(5),
+.table-container td:nth-child(5) {
+  width: 200px;
+}
+
+/* Cột Số điện thoại */
+.table-container th:nth-child(6),
+.table-container td:nth-child(6) {
+  width: 120px;
+}
+
+/* Cột Địa chỉ */
+.table-container th:nth-child(7),
+.table-container td:nth-child(7) {
+  width: 180px;
+}
+
+/* Cột Giới tính */
+.table-container th:nth-child(8),
+.table-container td:nth-child(8) {
+  width: 90px;
+  text-align: center;
+}
+
+/* Cột Ngày sinh */
+.table-container th:nth-child(9),
+.table-container td:nth-child(9) {
+  width: 110px;
+  text-align: center;
+}
+
+/* Cột Vai trò */
+.table-container th:nth-child(10),
+.table-container td:nth-child(10) {
+  width: 90px;
+  text-align: center;
+}
+
+/* Cột Trạng thái */
+.table-container th:nth-child(11),
+.table-container td:nth-child(11) {
+  width: 110px;
+  text-align: center;
+}
+
+/* Cột Kinh nghiệm */
+.table-container th:nth-child(12),
+.table-container td:nth-child(12) {
+  width: 120px;
+  text-align: center;
+}
+
+/* Cột Chứng chỉ */
+.table-container th:nth-child(13),
+.table-container td:nth-child(13) {
+  width: 150px;
+}
+
+/* Cột Tính năng */
+.table-container th:nth-child(14),
+.table-container td:nth-child(14) {
+  width: 100px;
+  text-align: center;
+  white-space: nowrap; /* Giữ nguyên để icon chỉnh sửa không xuống dòng */
+}
+
+/* Đảm bảo icon chỉnh sửa hiển thị đầy đủ */
+.icon-edit {
+  color: rgb(218, 237, 75);
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 0.3s;
+  display: inline-block; /* Đảm bảo icon không bị cắt */
+}
+
+/* === Modal container === */
+.modal.add-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', Arial, sans-serif;
+}
+
+/* Dấu sao đỏ cho các trường bắt buộc */
+.required-star {
+  color: #ef4444; /* Màu đỏ */
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* Đảm bảo label hiển thị inline để dấu * nằm ngay bên cạnh */
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  display: inline-flex; /* Đảm bảo label và dấu * trên cùng một dòng */
+  align-items: center;
+}
+
+/* === Modal content === */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* === Close button === */
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+}
+.modal-close-btn:hover {
+  color: #000;
+}
+
+/* === Heading === */
+.modal-h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1976d2;
+  margin-bottom: 1.5rem;
+}
+
+/* === Form structure === */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === Grid layout === */
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+/* === Full-width grid item for phone input === */
+.full-width {
+  grid-column: 1 / -1; /* Span across all columns */
+}
+
+/* === Grid item with horizontal label/input === */
+.modal-grid-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* === Label bên trái === */
+.field-label {
+  min-width: 130px;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* === Input/select bên phải === */
+.modal-grid-item input,
+.modal-grid-item select {
+  flex: 1;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  padding: 0.5rem;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+/* === Extend address input field === */
+.modal-grid-item [name="address"] {
+  flex: 2; /* Increase width relative to other inputs */
+  max-width: 600px; /* Set a maximum width to prevent overextension */
+}
+
+/* === Error message styling === */
+.error {
+  color: #e03e3e;
+  font-size: 12px;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* === Horizontal radio field (Giới tính, Trạng thái) === */
+.horizontal-field {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.inline-options {
+  display: flex;
+  gap: 2rem;
+}
+.inline-options label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 14px;
+}
+
+/* Class chung cho cả mã vùng và số điện thoại */
+.phone-input {
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+/* Nhóm input số điện thoại */
+.phone-input-group {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 400px;
+  flex-wrap: nowrap;
+  align-items: center;
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* Select mã vùng (smaller size) */
+.phone-code-select {
+  width: 60px; /* Reduced width for smaller select */
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2' width='14' height='14'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 0.9rem; /* Slightly smaller arrow */
+  padding: 0.4rem; /* Reduced padding */
+  font-size: 0.85rem; /* Slightly smaller font */
+}
+
+/* Input số điện thoại */
+.phone-number-input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  outline: none;
+}
+
+/* Focus state cho từng phần tử */
+.phone-code-select:focus,
+.phone-number-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Đảm bảo trường số điện thoại không chiếm toàn bộ chiều ngang */
+.modal-grid-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* === Certifications container === */
+.certifications {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+/* === Dropdown chọn chứng chỉ === */
+.certificate-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #1976d2;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* === List các chứng chỉ đã chọn === */
+.certificate-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+  max-width: 100%;
+}
+
+/* === Mỗi chứng chỉ dạng nhỏ như tag === */
+.certificate-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 12px;
+  padding: 0.3rem 0.6rem;
+  background-color: #e6f0ff;
+  color: #0d47a1;
+  border: 1px solid #1976d2;
+  border-radius: 4px;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+/* === Nút xoá chứng chỉ === */
+.certificate-item button {
+  background: #e03e3e;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === Buttons === */
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.modal-button-submit {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.modal-button-reset {
+  background-color: #888;
+  color: white;
+  font-weight: bold;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .modal-grid {
+    grid-template-columns: 1fr;
+  }
+  .modal-grid-item,
+  .full-width {
+    grid-column: 1 / -1; /* Full width on mobile */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .field-label {
+    text-align: left;
+    margin-bottom: 0.3rem;
+  }
+  .modal-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .modal-button-submit,
+  .modal-button-reset {
+    width: 100%;
+  }
+  .phone-input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .phone-code-select {
+    width: 100%; /* Full width on mobile for usability */
+  }
+  .phone-number-input {
+    width: 100%; /* Full width on mobile */
+  }
+  .modal-grid-item [name="address"] {
+    max-width: 100%; /* Full width on mobile */
+  }
+}
+
+.confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.modal-actions .btn {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-actions .btn.btn-red {
+  background-color: #d32f2f;
+  color: white;
+}
+
+.modal-actions .btn.btn-red:hover {
+  background-color: #b71c1c;
+}
+
+.modal-actions .btn.btn-green {
+  background-color: #67c5ff;
+  color: white;
+}
+
+.modal-actions .btn.btn-green:hover {
+  background-color: #22aeff;
+}
