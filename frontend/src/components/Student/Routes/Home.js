@@ -10,8 +10,12 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const coursesPerPage = 8;
-  const bannerImages = ["/logo512.png", "/logo512.png", "/img/OIP (2).jpg"];
-  const navigate = useNavigate();
+  const bannerImages = [
+    "https://pixabay.com/photos/online-learning-education-technology-5163265/",
+    "https://pixabay.com/photos/e-learning-online-education-technology-5163264/",
+    "https://pixabay.com/photos/webinar-online-learning-education-5163263/"
+  ];
+    const navigate = useNavigate();
 
   // Lấy token từ localStorage
   const token = localStorage.getItem("token");

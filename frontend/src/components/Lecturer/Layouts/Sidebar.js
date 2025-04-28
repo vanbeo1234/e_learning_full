@@ -36,7 +36,7 @@ const Sidebars = ({ handleLogout }) => {
         </li>
         <li className="logout">
           <button onClick={handleLogout} className="logout-button">
-            <i className="fas fa-sign-out-alt"></i> Đăng xuất
+          <i className="fas fa-sign-out-alt"></i> Đăng xuất          
           </button>
         </li>
       </ul>
