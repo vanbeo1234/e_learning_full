@@ -427,20 +427,32 @@ background: #1d78ff; /* Change to a different color for the active dot */
 }
 
 /* Course Card */
+/* Course Card */
 .homestudents-course-card {
-background: #cbe2ff;
-padding: 40px;
-border-radius: 10px;
-text-align: center;
+  background: #cbe2ff;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden; /* Hide overflow content */
+  min-width: 300px;
+  min-height: 600px;
+
 }
 
 .homestudents-course-image {
-width: 100%;
-height: 150px;
-object-fit: cover;
-border-radius: 10px;
-margin-bottom: 16px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 16px;
 }
+
+.homestudents-course-description {
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+}
+
 
 /* Courses Section */  
 .homestudents-courses-header {  

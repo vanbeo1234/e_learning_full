@@ -85,7 +85,7 @@ body {
 
 .content {  
   flex-grow: 1; /* Cho phép content chiếm không gian còn lại */  
-  margin-left: 250px; /* Đảm bảo nội dung không chồng lên sidebar */  
+  margin-left: 100px; /* Đảm bảo nội dung không chồng lên sidebar */  
   padding: 20px;  
   padding-top: 60px; /* Đảm bảo nội dung không bị che bởi header */  
 }  
@@ -480,11 +480,15 @@ table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ebebeb;
+  max-width: 200px; /* Set a maximum width for table cells */
+  overflow: hidden; /* Hide overflow content */
+  text-overflow: ellipsis; /* Add ellipsis (...) for overflow text */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
 table th {
   background-color: #efefef;
-  width: 10px;
+  width: none;
 }
 
 table td button {
@@ -499,6 +503,7 @@ table td button {
 table td button:hover {
   background-color: #007bff;
 }
+
 
 .pagination {
   display: flex;

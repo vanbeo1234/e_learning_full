@@ -9,21 +9,22 @@ function Welcome() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const carouselItems = [
     {
-      image: 'https://images.unsplash.com/photo-1516321310762-47d9e56de51c?q=80&w=2070&auto=format&fit=crop',
-      title: 'Học Mọi Lúc, Mọi Nơi',
-      text: 'Khám phá các khóa học chất lượng cao, được thiết kế để bạn tự do học tập theo lịch trình của riêng mình.',
+        image: 'https://images.unsplash.com/photo-1516321310762-47d9e56de51c?q=80&w=2070&auto=format&fit=crop',
+        title: 'Học Mọi Lúc Mọi Nơi',
+        text: 'Khám phá các khóa học chất lượng cao, được thiết kế để bạn tự do học tập theo lịch trình của riêng mình.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop',
-      title: 'Giảng Viên Hàng Đầu',
-      text: 'Học từ các chuyên gia giàu kinh nghiệm, được chứng nhận bởi các tổ chức quốc tế.',
+        image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop',
+        title: 'Giảng Viên Hàng Đầu',
+        text: 'Học từ các chuyên gia giàu kinh nghiệm, được chứng nhận bởi các tổ chức quốc tế.',
     },
     {
-      image: 'https://images.unsplash.com/photo-1501504901894-7c8d995ab56a?q=80&w=2070&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop',
       title: 'Kỹ Năng Cho Tương Lai',
-      text: 'Nâng cao kỹ năng lập trình, quản lý dự án, và hơn thế nữa với các khóa học thực tiễn.',
+        text: 'Nâng cao kỹ năng lập trình, quản lý dự án, và hơn thế nữa với các khóa học thực tiễn.',
     },
-  ];
+   
+];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,25 +45,25 @@ function Welcome() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const testimonials = [
     {
-      name: 'Nguyễn Thị E',
+      name: 'Nguyễn Thị Vân',
       occupation: 'Nhà Phát Triển Web',
       image: 'https://randomuser.me/api/portraits/women/2.jpg',
       text: '“Khóa học tại E-LEARNING đã thay đổi cách tôi học lập trình. Nội dung thực tiễn, giảng viên tận tâm, và hỗ trợ 24/7 giúp tôi tiến bộ vượt bậc!” 🌟',
     },
     {
-      name: 'Trần Văn F',
+      name: 'Trần Văn Đức',
       occupation: 'Kỹ Sư Phần Mềm',
       image: 'https://randomuser.me/api/portraits/men/3.jpg',
       text: '“Tôi rất ấn tượng với lộ trình học cá nhân hóa. Các dự án thực tế giúp tôi áp dụng ngay kiến thức vào công việc.”',
     },
     {
-      name: 'Lê Thị G',
+      name: 'Lê Thị Linh',
       occupation: 'Sinh Viên CNTT',
       image: 'https://randomuser.me/api/portraits/women/4.jpg',
       text: '“E-LEARNING cung cấp tài liệu phong phú và cộng đồng học tập tuyệt vời. Tôi đã tự tin hơn khi làm dự án nhóm!”',
     },
     {
-      name: 'Phạm Văn H',
+      name: 'Phạm Văn Minh',
       occupation: 'Chuyên Gia DevOps',
       image: 'https://randomuser.me/api/portraits/men/5.jpg',
       text: '“Công nghệ AI hỗ trợ học tập tại đây thật sự khác biệt. Tôi học nhanh hơn và luôn được cập nhật xu hướng mới.”',
@@ -277,11 +278,11 @@ function Welcome() {
             },
             {
               title: 'Lập Trình Python Cơ Bản',
-              image: 'https://images.unsplash.com/photo-1516321310762-47d9e56de51c?q=80&w=2070&auto=format&fit=crop',
+              image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop',
             },
             {
               title: 'ReactJS Chuyên Sâu',
-              image: 'https://images.unsplash.com/photo-1501504901894-7c8d995ab56a?q=80&w=2070&auto=format&fit=crop',
+              image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=2070&auto=format&fit=crop',
             },
           ].map((course, index) => (
             <article className="welcome-popular-course" key={index}>
@@ -314,10 +315,10 @@ function Welcome() {
         <h2 className="welcome-instructors-title">Đội Ngũ Giảng Viên</h2>
         <div className="welcome-instructors-container">
           {[
-            { name: 'Nguyễn Văn A', title: 'Chuyên Gia Lập Trình' },
-            { name: 'Trần Thị B', title: 'Giảng Viên Python' },
-            { name: 'Lê Văn C', title: 'Chuyên Gia DevOps' },
-            { name: 'Phạm Thị D', title: 'Thiết Kế UI/UX' },
+            { name: 'Nguyễn Văn Minh', title: 'Chuyên Gia Lập Trình' },
+            { name: 'Trần Thị Vân', title: 'Giảng Viên Python' },
+            { name: 'Lê Văn Đức', title: 'Chuyên Gia DevOps' },
+            { name: 'Phạm Thị Linh', title: 'Thiết Kế UI/UX' },
           ].map((instructor, index) => (
             <div className="welcome-instructor" key={index}>
               <img

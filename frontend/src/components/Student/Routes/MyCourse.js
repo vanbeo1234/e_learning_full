@@ -367,30 +367,35 @@ const MyCourse = () => {
 
           {/* Nút phân trang */}
           <div className="mycourse-pagination-buttons">
-            <button
-              onClick={() => handlePageChange(1)}
-              disabled={currentPage === 1}
-              className={currentPage === 1 ? "mycourse-disabled" : ""}
-            >
-              «
-            </button>
-            {[...Array(totalPages).keys()].map((number) => (
-              <button
-                key={number + 1}
-                onClick={() => handlePageChange(number + 1)}
-                className={currentPage === number + 1 ? "mycourse-active" : ""}
-              >
-                {number + 1}
-              </button>
-            ))}
-            <button
-              onClick={() => handlePageChange(totalPages)}
-              disabled={currentPage === totalPages}
-              className={currentPage === totalPages ? "mycourse-disabled" : ""}
-            >
-              »
-            </button>
-          </div>
+  {totalPages > 1 && (
+    <>
+      <button
+        onClick={() => handlePageChange(1)}
+        disabled={currentPage === 1}
+        className={currentPage === 1 ? "mycourse-disabled" : ""}
+      >
+        «
+      </button>
+      {[...Array(totalPages).keys()].map((number) => (
+        <button
+          key={number + 1}
+          onClick={() => handlePageChange(number + 1)}
+          className={currentPage === number + 1 ? "mycourse-active" : ""}
+        >
+          {number + 1}
+        </button>
+      ))}
+      <button
+        onClick={() => handlePageChange(totalPages)}
+        disabled={currentPage === totalPages}
+        className={currentPage === totalPages ? "mycourse-disabled" : ""}
+      >
+        »
+      </button>
+    </>
+  )}
+</div>
+
         </section>
       </div>
     </main>
